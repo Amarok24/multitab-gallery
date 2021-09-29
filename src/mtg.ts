@@ -1,6 +1,6 @@
 /*
 MultiTab-Gallery
-Version 1.0
+Version 1.0.1
 Copyright 2021 Jan Prazak, https://github.com/Amarok24
 
 Licensed under the Apache License, Version 2.0 (the "License");

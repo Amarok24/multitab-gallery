@@ -1,4 +1,4 @@
-# MultiTab-Gallery (v1.0)
+# MultiTab-Gallery (v1.0.1)
 - A simple library written in TypeScript and CSS (uses CSS 3 features for animation).
 - Easy to integrate (but you will have to use your coding skills to adjust it if needed).
 - Minimalistic, tiny filesize.

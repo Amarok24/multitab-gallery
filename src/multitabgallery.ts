@@ -1,6 +1,6 @@
 /*
 MultiTab-Gallery
-Version 1.0
+Version 1.0.1
 Copyright 2021 Jan Prazak, https://github.com/Amarok24
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -85,7 +85,7 @@ class MultiTabGallery {
 
 
   protected coupleNavAndCards(
-    navWrappers: NodeListOf<Element>, contentWrappers: NodeListOf<Element>) {
+    navWrappers: NodeListOf<Element>, contentWrappers: NodeListOf<Element>): void {
 
     const onNavButtonClick = (
       wrapperIndex: number, buttonIndex: number, ev: Event): void => {
@@ -122,7 +122,7 @@ class MultiTabGallery {
 
       for (let ch = 0; ch < nodeList[parentIndex].childElementCount; ch++) {
         tempPixels = nodeList[parentIndex].children[ch].getBoundingClientRect().height;
-        console.log('tempPixels ', tempPixels);
+        //console.log('tempPixels ', tempPixels);
 
         if (tempPixels > tempMaxPixels) {
           currentMaxIndex = ch;
@@ -159,7 +159,7 @@ class MultiTabGallery {
     };
 
     if (this._timeoutIdWindowResize !== 0) {
-      // Optimization for not overloading the browser with too many func executions.
+      // Optimization to not overload the browser with too many func executions.
       // Timeout ID gets deleted each time, so doAfterResize gets executed only after
       // user stops resizing the window (number in milliseconds below).
       clearTimeout(this._timeoutIdWindowResize);
