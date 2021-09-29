@@ -9,6 +9,9 @@
 ## Note
 index.html needs to run in a live-server environment (because JS modules are used).
 
+## DEMO
+Live demo here: https://amarok24.github.io/multitab-gallery/
+
 ---
 
 
