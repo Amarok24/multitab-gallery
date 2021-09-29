@@ -1,0 +1,274 @@
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+
+<head>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1' />
+  <meta name='author' content='Jan Prazak' />
+  <meta name='description' content='https://github.com/Amarok24' />
+
+  <title>MultiTab-Gallery DEMO</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+  <link href="https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      background: #ebebeb;
+      font-family: 'Gemunu Libre', sans-serif;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    h1 {
+      margin: 0;
+      text-align: center;
+    }
+
+    hr {
+      border: 0;
+      border-bottom: 5px solid grey;
+    }
+
+    ul {
+      list-style-type: square;
+    }
+
+    footer {
+      margin: 3em 0 0 0;
+      padding: 1em;
+      background-color: lightskyblue;
+    }
+
+    #gh {
+      position: fixed;
+      right: 0;
+      top: 0;
+      background-color: #d6e6ee;
+      color: #1c3055;
+      padding: 10px 10px 30px 40px;
+      border-radius: 0 0 0 100%;
+      text-align: right;
+    }
+
+    #gh a {
+      display: inline;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 20px;
+      border: thin solid #bababa;
+      box-shadow: 3px 3px 5px #bababa;
+      background-color: #fdfdfd;
+      color: #404040;
+    }
+
+
+    .myNav {
+      margin-bottom: 1em;
+    }
+
+    .myNav>* {
+      display: inline-block;
+      margin: 3px;
+      padding: 5px 20px;
+      border: 1px solid darkslategrey;
+      box-shadow: 1px 1px 3px grey;
+      background-color: ghostwhite;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .myWrapper {
+      box-shadow: 0 0 5px lightsteelblue;
+    }
+
+    .myTabContent h4 {
+      margin: 0 0 1em;
+    }
+
+    .mt-selected {
+      /* Use this class to define styling of selected navigation button. */
+      background-color: cornflowerblue;
+    }
+
+    .mySecondNav>* {
+      box-shadow: none;
+      border-color: lightblue;
+      border-radius: 50%;
+    }
+
+    .mySecondNav .mt-selected {
+      border-bottom: 4px solid midnightblue;
+      color: white;
+    }
+
+    .bg {
+      color: white;
+      padding: 2em 1em;
+    }
+
+    .bg--bg1 {
+      background-color: steelblue;
+    }
+
+    .bg--bg2 {
+      background-color: teal;
+    }
+  </style>
+
+
+  <script type='module' src='dist/mtg.js'>
+  </script>
+
+</head>
+
+<body>
+
+  <div class='container'>
+
+    <h1>MultiTab-Gallery DEMO</h1>
+
+    <hr />
+
+    <ul>
+      <li>A simple library written in TypeScript and CSS (uses CSS 3 features for
+        animation).</li>
+      <li>Easy to integrate (but you will have to use your coding skills to adjust it if
+        needed).</li>
+      <li>Minimalistic, tiny filesize.</li>
+      <li>Zero dependencies.</li>
+      <li>Fully responsive.</li>
+      <li>Free and open source.</li>
+    </ul>
+
+
+    <hr />
+
+    <h3>Navigation works with any elements, here with &lt;a&gt;</h3>
+
+    <nav class='myNav'>
+      <!-- Optionally add class 'mt-selected' to 1st nav item to apply styling -->
+      <a href='#' class='mt-selected'>A 1</a>
+      <a href='#'>A 2</a>
+      <a href='#'>A 3</a>
+      <a href='#'>A 4</a>
+      <a href='#'>A 5</a>
+    </nav>
+
+    <section class='myTabContent'>
+      <!-- All content items have to be wrapped by one parent element -->
+
+      <article>
+        A1 content. There can be basically anything inside, also images.<br />
+        <img src='assets/amiga500.png' alt='Amiga 500' width='167' height='82' />
+      </article>
+
+      <article>
+        A2 content.<br />
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi, doloribus harum
+        consectetur quaerat quam accusamus nisi libero similique pariatur, in atque eaque
+        sunt voluptas vitae illum, quisquam laborum cumque ut est provident rem. Ratione
+        voluptatem consequatur fugiat perspiciatis neque aliquid id vel exercitationem
+        quas distinctio incidunt eum ducimus deleniti officia architecto aperiam error aut
+        veritatis culpa, unde quia tenetur! Illum!
+      </article>
+
+      <article>
+        A3 content.<br />
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. In eius exercitationem
+        nostrum voluptatibus, non sit.
+      </article>
+
+      <article>
+        A4 content<br />
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto similique
+        perferendis suscipit deserunt, nulla praesentium magni ab est cumque ipsa?
+      </article>
+
+      <article>
+        A5 content<br />
+        <img src='assets/schneider-cpc.png' alt='Schneider CPC6128' width='200'
+          height='136' />
+      </article>
+
+    </section>
+
+    <hr />
+
+    <h3>Navigation with &lt;button&gt; elements</h3>
+
+    <nav class='myNav mySecondNav'>
+      <button class='mt-selected'>B 1</button>
+      <button>B 2</button>
+      <button>B 3</button>
+    </nav>
+
+    <section class='myTabContent'>
+
+      <div class='bg bg--bg1'>
+        <h4>B1 content</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam inventore quam
+          nulla odit hic voluptatibus!</p>
+      </div>
+      <div class='bg bg--bg2'>
+        <h4>B2 content</h4>
+        <p>Adipisicing elit lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          Mollitia, quisquam.
+        </p>
+      </div>
+      <div>
+        <h4>B3 content</h4>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corrupti facere
+          magnam explicabo ex deleniti voluptas odit dicta, dolor nostrum accusantium et
+          nisi rerum aut suscipit numquam recusandae consequatur sed veniam quia dolores.
+          Autem quas recusandae dignissimos tenetur alias dolorum consequatur.</p>
+      </div>
+
+    </section>
+
+    <hr />
+
+
+    <h3>You can also simply create a slideshow with images</h3>
+    <nav class='myNav mySecondNav'>
+      <button class='mt-selected'>Image 1</button>
+      <button>Image 2</button>
+      <button>Image 3</button>
+    </nav>
+
+    <section class='myTabContent'>
+      <img src="assets/gallery1.webp" alt="" width="1280" height="450" />
+      <img src="assets/gallery2.webp" alt="" width="1280" height="450" />
+      <img src="assets/gallery3.webp" alt="" width="1280" height="450" />
+<!-- Free images from Pixabay
+https://pixabay.com/photos/horses-horseback-riding-galloping-5871847/
+https://pixabay.com/photos/sea-surfer-sunset-silhouette-beach-6568951/
+https://pixabay.com/photos/animal-flowers-dog-outdoors-canine-6637774/
+-->
+    </section>
+
+    <hr />
+
+    <footer>
+      The height of all content wrappers gets automatically adjusted to the highest
+      member, even if the layout changes.<br /> Try to resize the viewport (or change display orientation if you are viewing this page on a mobile device).
+    </footer>
+
+  </div>
+
+
+
+  <span id='gh'>
+    <a href='https://github.com/Amarok24/multitab-gallery' target='_blank'>GitHub
+      project</a>
+  </span>
+
+</body>
+
+</html>
