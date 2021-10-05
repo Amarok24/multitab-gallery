@@ -7,7 +7,7 @@
 - Free and open source.
 
 ## Note
-'index.html' needs to run in a live-server environment if JS modules are used. And alternative way is to load the bundled JS code which runs offline. Both examples are included in the HTML file.
+'index.html' needs to run in a live-server environment if JS modules are used. An alternative way is to load the bundled JS code which runs offline. Both examples are included in the index file.
 
 ## DEMO
 Live demo here: https://amarok24.github.io/multitab-gallery/
