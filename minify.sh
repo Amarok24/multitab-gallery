@@ -1,5 +1,5 @@
 #!/bin/sh
 # echo $@
-echo "Minifying xxxxx.js with Terser..."
+echo "Minifying bundle.js with Terser..."
 
-terser dist/xxxxx.js --compress --mangle --output dist/xxxxx.min.js
+terser dist/bundle.js --compress --mangle --output dist/bundle.min.js

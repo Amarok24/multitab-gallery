@@ -1,10 +1,14 @@
 import { CssTools } from "./csstools.js";
 export { MultiTabGallery };
 class MultiTabGallery {
-    constructor(queryNavWrappers, queryContentWrappers) {
+    constructor(queryNavWrappers, queryContentWrappers, keepHeight = true) {
         this.maxHeightIndexes = [];
+        this.cssClassCardWrapper = 'mt-card-wrapper';
+        this.cssClassCardContent = 'mt-card-content';
         this.cssClassNavActive = 'mt-selected';
         this.cssClassContentActive = 'mt-shown';
+        this.cssClassContentHighest = 'mt-highest';
+        this.cssMaybeStatic = 'position: static;';
         this._timeoutIdWindowResize = 0;
         this.recalculateHighestElemIndexes = () => {
             const doAfterResize = () => {
@@ -28,8 +32,11 @@ class MultiTabGallery {
         this.navWrappers = document.querySelectorAll(queryNavWrappers);
         this.contentWrappers = document.querySelectorAll(queryContentWrappers);
         this.coupleNavAndCards(this.navWrappers, this.contentWrappers);
-        this.recalculateHighestElemIndexes();
-        window.addEventListener('resize', this.recalculateHighestElemIndexes);
+        if (keepHeight) {
+            this.cssMaybeStatic = '';
+            this.recalculateHighestElemIndexes();
+            window.addEventListener('resize', this.recalculateHighestElemIndexes);
+        }
         this.init();
     }
     init() {
@@ -54,6 +61,7 @@ class MultiTabGallery {
       .mt-card-content.mt-shown {
         z-index: 1;
         opacity: 1;
+        ${this.cssMaybeStatic}
       }
 
       .mt-card-content.mt-highest {
@@ -61,12 +69,12 @@ class MultiTabGallery {
       }
       `);
         for (let i = 0; i < this.contentWrappers.length; i++) {
-            CssTools.elemClassAdd(this.contentWrappers[i].children[0], 'mt-shown');
-            CssTools.elemClassAdd(this.contentWrappers[i], 'mt-card-wrapper');
+            CssTools.elemClassAdd(this.contentWrappers[i].children[0], this.cssClassContentActive);
+            CssTools.elemClassAdd(this.contentWrappers[i], this.cssClassCardWrapper);
         }
         for (let w = 0; w < this.contentWrappers.length; w++) {
             for (let ch = 0; ch < this.contentWrappers[w].childElementCount; ch++) {
-                CssTools.elemClassAdd(this.contentWrappers[w].children[ch], 'mt-card-content');
+                CssTools.elemClassAdd(this.contentWrappers[w].children[ch], this.cssClassCardContent);
             }
         }
     }
@@ -96,7 +104,6 @@ class MultiTabGallery {
             let currentMaxIndex = 0;
             for (let ch = 0; ch < nodeList[parentIndex].childElementCount; ch++) {
                 tempPixels = nodeList[parentIndex].children[ch].getBoundingClientRect().height;
-                console.log('tempPixels ', tempPixels);
                 if (tempPixels > tempMaxPixels) {
                     currentMaxIndex = ch;
                     tempMaxPixels = tempPixels;

@@ -1,6 +1,6 @@
 /*
 MultiTab-Gallery
-Version 1.0.1
+Version 1.0.2
 Copyright 2021 Jan Prazak, https://github.com/Amarok24
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,17 +25,26 @@ class MultiTabGallery {
   public contentWrappers: NodeListOf<Element>;
   public maxHeightIndexes: number[] = [];
 
+  public cssClassCardWrapper = 'mt-card-wrapper';
+  public cssClassCardContent = 'mt-card-content';
   public cssClassNavActive = 'mt-selected';
   public cssClassContentActive = 'mt-shown';
+  public cssClassContentHighest = 'mt-highest';
 
+  private cssMaybeStatic = 'position: static;';
   private _timeoutIdWindowResize = 0;
 
-  constructor(queryNavWrappers: string, queryContentWrappers: string) {
+  constructor(queryNavWrappers: string, queryContentWrappers: string, keepHeight: boolean = true) {
     this.navWrappers = document.querySelectorAll<Element>(queryNavWrappers);
     this.contentWrappers = document.querySelectorAll<Element>(queryContentWrappers);
     this.coupleNavAndCards(this.navWrappers, this.contentWrappers);
-    this.recalculateHighestElemIndexes();
-    window.addEventListener('resize', this.recalculateHighestElemIndexes);
+
+    if (keepHeight) {
+      this.cssMaybeStatic = '';
+      this.recalculateHighestElemIndexes();
+      window.addEventListener('resize', this.recalculateHighestElemIndexes);
+    }
+
     this.init();
   }
 
@@ -62,6 +71,7 @@ class MultiTabGallery {
       .mt-card-content.mt-shown {
         z-index: 1;
         opacity: 1;
+        ${this.cssMaybeStatic}
       }
 
       .mt-card-content.mt-highest {
@@ -70,14 +80,14 @@ class MultiTabGallery {
       `);
 
     for (let i = 0; i < this.contentWrappers.length; i++) {
-      CssTools.elemClassAdd(this.contentWrappers[i].children[0], 'mt-shown');
-      CssTools.elemClassAdd(this.contentWrappers[i], 'mt-card-wrapper');
+      CssTools.elemClassAdd(this.contentWrappers[i].children[0], this.cssClassContentActive);
+      CssTools.elemClassAdd(this.contentWrappers[i], this.cssClassCardWrapper);
     }
 
     for (let w = 0; w < this.contentWrappers.length; w++) {
 
       for (let ch = 0; ch < this.contentWrappers[w].childElementCount; ch++) {
-        CssTools.elemClassAdd(this.contentWrappers[w].children[ch], 'mt-card-content');
+        CssTools.elemClassAdd(this.contentWrappers[w].children[ch], this.cssClassCardContent);
       }
 
     }

@@ -1,6 +1,6 @@
 /*
 MultiTab-Gallery
-Version 1.0.1
+Version 1.0.2
 Copyright 2021 Jan Prazak, https://github.com/Amarok24
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,3 +22,9 @@ const cssQueryNavWrapper = '.myNav';
 const cssQueryContentWrapper = '.myTabContent';
 
 new MultiTabGallery(cssQueryNavWrapper, cssQueryContentWrapper);
+
+/*
+  Or use
+    new MultiTabGallery(cssQueryNavWrapper, cssQueryContentWrapper, false);
+  if you don't want to keep same height of the wrapper.
+*/
